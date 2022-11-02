@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 hiii hellow ketan hefre
 good morning 
 have a beutyful day
+=======
+>>>>>>> vijay
 
