@@ -1,0 +1,23 @@
+#!/bin/bash
+
+sudo apt update && sudo apt upgrade
+sudo apt install default-jdk
+sudo mkdir -p /usr/share/keyrings
+
+sudo apt install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee
+/usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]\
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt update
+sudo apt install jenkins
+
+passrd:
+ketan@23Aws
